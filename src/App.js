@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+// import "./App.css";
+import questions from "./data.js";
+import Banner from "./Banner";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Banner>
+      <Banner.Header>Frequently Asked Questions</Banner.Header>
+      <div id="faq-container">
+        {questions.map((question) => (
+          <Banner.Entity key={question.id}>
+            <Banner.Question id={`question-${question.id}`}>
+              {question.question}
+            </Banner.Question>
+            <Banner.Text id={`answer-${question.id}`}>
+              {question.answer}
+            </Banner.Text>
+          </Banner.Entity>
+        ))}
+      </div>
+    </Banner>
   );
 }
 
